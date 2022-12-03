@@ -44,35 +44,50 @@ class Rational:
     def __gt__(self, other):
         if not isinstance(other, Rational):
             raise TypeError(f"Unsupported operand type for {type(self.__name__)} and {type(other.__name__)}")
-        return self.float_rational() > other.float_rational()
+        common_denominator = math.lcm(self.__denominator, other.__denominator)
+        return common_denominator // self.__denominator * self.__numerator > common_denominator // \
+               other.__denominator * other.__numerator
 
     def __lt__(self, other):
         if not isinstance(other, Rational):
             raise TypeError(f"Unsupported operand type for {type(self.__name__)} and {type(other.__name__)}")
-        return self.float_rational() < other.float_rational()
+        common_denominator = math.lcm(self.__denominator, other.__denominator)
+        return common_denominator // self.__denominator * self.__numerator < common_denominator // \
+               other.__denominator * other.__numerator
 
     def __ge__(self, other):
         if not isinstance(other, Rational):
             raise TypeError(f"Unsupported operand type for {type(self.__name__)} and {type(other.__name__)}")
-        return self.float_rational() >= other.float_rational()
+        common_denominator = math.lcm(self.__denominator, other.__denominator)
+        return common_denominator // self.__denominator * self.__numerator >= common_denominator //\
+               other.__denominator * other.__numerator
 
     def __le__(self, other):
         if not isinstance(other, Rational):
             raise TypeError(f"Unsupported operand type for {type(self.__name__)} and {type(other.__name__)}")
-        return self.float_rational() <= other.float_rational()
+        common_denominator = math.lcm(self.__denominator, other.__denominator)
+        return common_denominator // self.__denominator * self.__numerator <= common_denominator // \
+               other.__denominator * other.__numerator
 
     def __eq__(self, other):
         if not isinstance(other, Rational):
             raise TypeError(f"Unsupported operand type for {type(self.__name__)} and {type(other.__name__)}")
-        return self.float_rational() == other.float_rational()
+        common_denominator = math.lcm(self.__denominator, other.__denominator)
+        return common_denominator // self.__denominator * self.__numerator == common_denominator // \
+               other.__denominator * other.__numerator
 
     def __ne__(self, other):
         if not isinstance(other, Rational):
             raise TypeError(f"Unsupported operand type for {type(self.__name__)} and {type(other.__name__)}")
-        return self.float_rational() != other.float_rational()
+        common_denominator = math.lcm(self.__denominator, other.__denominator)
+        return common_denominator // self.__denominator * self.__numerator != common_denominator // \
+               other.__denominator * other.__numerator
 
 
-a = Rational(1, 4)
+a = Rational(1, 2)
 b = Rational(1, 2)
 print(b - a)
+print(a != b)
+
+
 
